@@ -1,0 +1,49 @@
+[package]
+name = "ash-laevatain"
+version = "0.38.0+1.4.352"
+authors = [
+    "Maik Klein <maikklein@googlemail.com>",
+    "Benjamin Saunders <ben.e.saunders@gmail.com>",
+    "Marijn Suijten <marijn@traverseresearch.nl>",
+]
+description = "Vulkan bindings for Rust: trimmed fork of ash keeping only modern Vulkan (dynamic rendering, descriptor heap, mesh shaders, synchronization2)"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/YzK0741/ash-laevatain"
+readme = "README.md"
+exclude = [".cargo/"]
+keywords = ["gamedev", "graphics", "vulkan", "bindings"]
+categories = [
+    "api-bindings",
+    "external-ffi-bindings",
+    "game-development",
+    "graphics",
+    "rendering::graphics-api"
+]
+edition = "2021"
+rust-version = "1.69.0"
+
+[dependencies]
+libloading = { version = "0.8", optional = true }
+
+[features]
+default = ["loaded", "debug", "std"]
+# Link the Vulkan loader at compile time.
+linked = []
+# Support searching for the Vulkan loader manually at runtime.
+loaded = ["libloading", "std"]
+# Whether Vulkan structs should implement Debug.
+debug = []
+# Whether the standard library should be required
+std = []
+# Enable provisional Vulkan extensions. May see *semver-breaking* code changes in non-breaking releases!
+provisional = []
+
+[package.metadata.release]
+no-dev-version = true
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[hints]
+mostly-unused = true

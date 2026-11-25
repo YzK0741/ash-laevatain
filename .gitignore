@@ -1,0 +1,5 @@
+# build artifacts
+/target
+
+# local offline-build config (points at ../_build-support/vendor, machine-specific)
+/.cargo
